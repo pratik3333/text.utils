@@ -1,4 +1,4 @@
-"""textutils URL Configuration
+"""textutils2 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -19,10 +19,11 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index,name='index'),
-    path('fort/',views.fort,name='fort'),
-    path('about/',views.about,name='about'),
-    path('abc',views.abc,name='abc'),
-
+    path('', views.index,name='index'),
+    path('removepunc', views.removepunc,name='revpuc'),
+    path('capitalizefirst', views.capitalizefirst,name='capfirst'),
+    path('newlineremove', views.newlineremove,name='newlineremove'),
+    path('spaceremover', views.spaceremover,name='spaceremover'),
+    path('charcount', views.charcount,name='charcount'),
 
 ]
