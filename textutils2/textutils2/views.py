@@ -7,19 +7,20 @@ def index(request):
 def analyze(request):
     #Get the text
     djtext=request.GET.get('text', 'default')
+    #check checkbox values
     removepunc=request.GET.get('removepunc', 'off')
     fullcaps=request.GET.get('fullcaps', 'off')
-    print(removepunc)
-    print(djtext)
+    newlineremover=request.GET.get('newlineremover', 'off')
+    #extraspaceremover=request.GET.get('extraspaceremover', 'off')
+
+    #check which checkbox is on
     if removepunc == "on":
-        # analyzed= djtext
         punctuation = '''?<>~"':;,//\|[]{}_.!@#$%^&*()-'''
         analyzed = ""
         for char in djtext:
             if char not in punctuation:
                 analyzed = analyzed + char
         params = {'purpose': 'Removed Punctuations', 'analyzed_text': analyzed}
-        # analyze the text
         return render(request, 'analyze.html', params)
     elif(fullcaps=="on"):
         analyzed=""
@@ -28,17 +29,36 @@ def analyze(request):
         params = {'purpose': 'changed to Uppercae', 'analyzed_text': analyzed}
         # analyze the text
         return render(request, 'analyze.html', params)
+    elif(newlineremover=="on"):
+        analyzed = ""
+        for char in djtext:
+            if char !="\n":
+                analyzed = analyzed + char
+        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        # analyze the text
+        return render(request, 'analyze.html', params)
+    elif(extraspaceremover=="on"):
+        analyzed = ""
+        for index,char in enumerate(djtext):
+            if not (djtext[index]== " " and djtext[index+1]==" "):
+                analyzed=analyzed+char
+        params = {'purpose': 'Extra Space Removed', 'analyzed_text': analyzed}
+        # analyze the text
+        return render(request, 'analyze.html', params)
     else:
         return HttpResponse("Error")
 #
-# def capitalizefirst(request):
-#     return HttpResponse("<h1>capitalize first</h1>")
-#
-# def newlineremove(request):
-#     return HttpResponse("newlineremove")
-#
-# def spaceremover(request):
-#     return HttpResponse("spaceremover<a href=''>Back</a>")
-#
-# def charcount(request):
-#     return HttpResponse("charcount")
+# def abc(request):
+#     djtext=request.GET.get('text','default')
+#     extraspaceremover = request.GET.get('extraspaceremover', 'off')
+#     if extraspaceremover == "on":
+#         analyzed = ""
+#         for index, char in enumerate(djtext):
+#             if not (djtext[index] == " " and djtext[index + 1] == " "):
+#                 analyzed = analyzed + char
+#         params = {'purpose': 'Extra Space Removed', 'analyzed_text': analyzed}
+#         # analyze the text
+#         return render(request, 'analyze.html', params)
+
+
+
