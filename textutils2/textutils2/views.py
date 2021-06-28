@@ -25,7 +25,7 @@ def analyze(request):
         analyzed=""
         for char in djtext:
             analyzed=analyzed + char.upper()
-        params = {'purpose': 'Uppercae', 'analyzed_text': analyzed}
+        params = {'purpose': 'changed to Uppercae', 'analyzed_text': analyzed}
         # analyze the text
         return render(request, 'analyze.html', params)
     else:
