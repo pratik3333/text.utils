@@ -8,6 +8,7 @@ def analyze(request):
     #Get the text
     djtext=request.GET.get('text', 'default')
     removepunc=request.GET.get('removepunc', 'off')
+    fullcaps=request.GET.get('fullcaps', 'off')
     print(removepunc)
     print(djtext)
     if removepunc == "on":
@@ -17,6 +18,13 @@ def analyze(request):
         for char in djtext:
             if char not in punctuation:
                 analyzed = analyzed + char
+        params = {'purpose': 'Removed Punctuations', 'analyzed_text': analyzed}
+        # analyze the text
+        return render(request, 'analyze.html', params)
+    elif(fullcaps=="on"):
+        analyzed=""
+        for char in djtext:
+            analyzed=analyzed + char.upper()
         params = {'purpose': 'Removed Punctuations', 'analyzed_text': analyzed}
         # analyze the text
         return render(request, 'analyze.html', params)
