@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,18 +23,7 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          <a class="nav-link" href="https://en.wikipedia.org/wiki/Western_Ghats">Sahyadri</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#"></a>
@@ -51,6 +40,34 @@
   <strong>Welcome to textUtils</strong> You can do anything with your text here!
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+    <div class="container">
+<label>Enter your text here and let Text Utils do the magic:-</label>
+
+<form action="/analyze" method="post"> {% csrf_token %}
+
+<textarea class="color" name="text" style="margin: 0px; width: 721px; height: 194px;"></textarea><br>
+
+      <div class="form-check form-switch">
+  <input class="form-check-input" name="removepunc" type="checkbox" id="flexSwitchCheckDefault1">
+  <label class="form-check-label" for="flexSwitchCheckDefault1">Remove Punctuations</label>
+</div>
+      <div class="form-check form-switch">
+  <input class="form-check-input" name="fullcaps" type="checkbox" id="flexSwitchCheckDefault2">
+  <label class="form-check-label" for="flexSwitchCheckDefault2">UPPERCASE</label>
+</div>
+      <div class="form-check form-switch">
+  <input class="form-check-input" name="newlineremover" type="checkbox" id="flexSwitchCheckDefault3">
+  <label class="form-check-label" for="flexSwitchCheckDefault3">New Line Remover</label>
+</div>
+      <div class="form-check form-switch">
+  <input class="form-check-input" name="extraspaceremover" type="checkbox" id="flexSwitchCheckDefault4">
+  <label class="form-check-label" for="flexSwitchCheckDefault4">ExtraSpace Remover</label><br>
+</div>
+      <button type="submit" class="btn btn-dark mt-2"> Analyze text</button>
+  </form>
+    </div>
+
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
