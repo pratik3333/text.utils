@@ -11,7 +11,7 @@ def analyze(request):
     removepunc=request.GET.get('removepunc', 'off')
     fullcaps=request.GET.get('fullcaps', 'off')
     newlineremover=request.GET.get('newlineremover', 'off')
-    #extraspaceremover=request.GET.get('extraspaceremover', 'off')
+    extraspaceremover=request.GET.get('extraspaceremover', 'off')
 
     #check which checkbox is on
     if removepunc == "on":
