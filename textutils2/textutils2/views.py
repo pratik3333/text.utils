@@ -21,37 +21,37 @@ def analyze(request):
             if char not in punctuation:
                 analyzed = analyzed + char
         params = {'purpose': 'Removed Punctuations', 'analyzed_text': analyzed}
-        #djtext=analyzed
-        return render(request, 'analyze.html', params)
-    elif(fullcaps=="on"):
+        djtext=analyzed
+        #return render(request, 'analyze.html', params)
+    if(fullcaps=="on"):
         analyzed=""
         for char in djtext:
             analyzed=analyzed + char.upper()
         params = {'purpose': 'changed to Uppercae', 'analyzed_text': analyzed}
         # analyze the text
-        return render(request, 'analyze.html', params)
-        #djtext=analyzed
-    elif(newlineremover=="on"):
+        #return render(request, 'analyze.html', params)
+        djtext=analyzed
+    if(newlineremover=="on"):
         analyzed = ""
         for char in djtext:
             if char !="\n" and char !="\r":
                 analyzed = analyzed + char
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
-        # analyze the text
-        return render(request, 'analyze.html', params)
-        #djtext=analyzed
-    elif(extraspaceremover=="on"):
+        #analyze the text
+        #return render(request, 'analyze.html', params)
+        djtext=analyzed
+    if(extraspaceremover=="on"):
         analyzed = ""
         for index,char in enumerate(djtext):
             if not (djtext[index]== " " and djtext[index+1]==" "):
                 analyzed=analyzed+char
         params = {'purpose': 'Extra Space Removed', 'analyzed_text': analyzed}
         # analyze the text
-        return render(request, 'analyze.html', params)
-        #djtext=analyzed
+        #return render(request, 'analyze.html', params)
+        djtext=analyzed
 
-    else:
-        return HttpResponse("Error")
+
+    return render(request, 'analyze.html', params)
 
 
 
