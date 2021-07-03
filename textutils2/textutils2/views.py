@@ -44,6 +44,7 @@ def analyze(request):
         analyzed = ""
         for index,char in enumerate(djtext):
             if not (djtext[index]== " " and djtext[index+1]==" "):
+
                 analyzed=analyzed+char
         params = {'purpose': 'Extra Space Removed', 'analyzed_text': analyzed}
         # analyze the text
